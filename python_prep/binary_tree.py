@@ -57,6 +57,19 @@ class Tree:
             result.append(root.data)
         return result
 
+    def find(self, data):
+        if data < self.data:
+            if self.left is None:
+                return str(data) + " not found in tree"
+            return self.left.find(data)
+        elif data > self.data:
+            if self.right is None:
+                return str(data) + " not found in tree"
+            return self.right.find(data)
+        else:
+            print(str(self.data) + " is found!")
+
+
 root = Tree(25)
 root.insert_node(15)
 root.insert_node(50)
@@ -87,3 +100,5 @@ print(root.in_order_traversal(root))
 print(root.preorder_traversal(root))
 
 print(root.postorder_traversal(root))
+
+root.find(31)
